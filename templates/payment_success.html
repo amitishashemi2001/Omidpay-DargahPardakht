@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Success</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        p, ul {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #counter {
+            font-size: 18px;
+            color: #555;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 dir="rtl">پرداخت شما به موفقیت انجام شد </h1>
+
+    <!-- Button to trigger the POST request to the backend -->
+    <form id="redirectForm" action="{% url 'verify_transaction' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="RefNum" value="{{ RefNum }}">
+        <input type="hidden" name="ResNum" value="{{ ResNum }}">
+        <input type="hidden" name="token" value="{{ token }}">
+
+        <button type="submit">بازگشت به سایت </button>
+    </form>
+
+    <!-- Countdown Timer -->
+    <p dir="rtl" id="counter">بازگشت به صفحه اصلی <span id="countdown">10</span >  ثانیه </p>
+</div>
+
+<script type="text/javascript">
+    var countdownElement = document.getElementById('countdown');
+    var countdown = 10;
+
+    var timer = setInterval(function() {
+        countdown--;
+        countdownElement.textContent = countdown;
+
+        if (countdown <= 0) {
+            clearInterval(timer);
+            document.getElementById('redirectForm').submit();
+        }
+    }, 1000);
+
+    setTimeout(function() {
+        document.getElementById('redirectForm').submit();
+    }, 10000);
+</script>
+</body>
+</html>

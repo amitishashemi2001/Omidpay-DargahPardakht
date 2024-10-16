@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <style>
+        /* Reset some basic styles */
+        body, h1, form {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Basic body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container for centering content */
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Header styling */
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        /* Form input styling */
+        input[type="text"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 80%;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        /* Button styling */
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        /* Button hover effect */
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 dir="rtl" >مبلغ پرداخت </h1>
+    <form id="Money" action="{% url 'get_token' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="amount" value="{{amount}}">
+        <button dir="rtl" type="submit">پرداخت </button>
+    </form>
+</div>
+
+</body>
+</html>

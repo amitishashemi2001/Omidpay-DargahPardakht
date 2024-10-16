@@ -1,0 +1,26 @@
+﻿<!-- apis/templates/payment_form.html -->
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirecting to Payment Gateway</title>
+</head>
+<body>
+<form id="paymentForm" action="{{ payment_url }}" method="post">
+    <fieldset>
+        <legend>Payment Information</legend>
+        <p>Token:
+            <input type="text" name="token" value="{{ token }}" readonly />
+        </p>
+        <p>Language:
+            <input type="text" name="language" value="{{ language }}" readonly />
+        </p>
+    </fieldset>
+    <p><input type="submit" value="Submit"/></p>
+</form>
+</div>
+
+
+</body>
+</html>

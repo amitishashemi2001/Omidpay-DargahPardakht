@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Success</title>
+</head>
+<body>
+<h1>Payment Success</h1>
+<form id="paymentForm" action="https://say.shaparak.ir/_ipgw_//MainTemplate/payment/" method="post">
+    <input type="hidden" name="token" value="{{ token }}" readonly />
+    <input type="hidden" name="language" value="fa" readonly />
+    <p dir="rtl">در حال انتقال به درگاه پرداخت</p>  
+</form>
+<script type="text/javascript">
+    document.getElementById('paymentForm').submit();
+</script>
+</script>
+</body>
+</html>
+ 
